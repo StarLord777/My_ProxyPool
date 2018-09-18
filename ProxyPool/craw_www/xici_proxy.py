@@ -27,6 +27,7 @@ def craw_xici():
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, 'lxml')
         ips = soup.select('table tr')
+        print(ips)
         ips.remove(ips[0])
         for i in ips:
             for j, k in enumerate(i):

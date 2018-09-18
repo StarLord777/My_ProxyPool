@@ -12,7 +12,6 @@ def craw_66ip():
         for i in range(len(ips)):
             str = ips[i]+":"+ports[i]
             redis.rpush('nowashhttp',str)
-            print('加入')
 
 
 craw_66ip()

@@ -5,7 +5,7 @@ redis = Redis(host='127.0.0.1',db=7)
 
 def wash_ip():
     print('线程{}启动'.format(threading.current_thread().name))
-    while redis.llen('nowashhttp')>5:
+    while redis.llen('nowashhttp')>1:
         i = str(redis.lpop('nowashhttp'))[2:-1]
         print(i)
         proxies = {'http': 'http://' + i,
@@ -20,5 +20,5 @@ def wash_ip():
             pass
 
 if __name__ == '__main__':
-    for i in range(100):
+    for i in range(500):
         threading.Thread(target=wash_ip).start()
